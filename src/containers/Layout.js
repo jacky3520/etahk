@@ -1,22 +1,38 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import Busbox from "../components/Busbox";
+import RouteSearch from "../components/RouteSearch";
+import './Layout.css'
 
 const Layout = () => {
 
-    const [items, setItems] = useState([]);
+    const [route, setRoute] = useState([]);
 
     useEffect(() => {
-        fetch('https://data.etabus.gov.hk/v1/transport/kmb/route/')
-            .then(res => res.json())
+        fetch("https://data.etabus.gov.hk/v1/transport/kmb/route/")
+            .then((res) => res.json())
             .then(
                 (result) => {
-                    setItems(result);
-                    console.log(items);
+                    setRoute(result.data)
                 }
             )
     }, [])
 
-    return(
-        <div>Testing 12123... </div>
+
+    return (
+        <div>
+            <RouteSearch />
+
+            <div className="mt-4 ml-6 p-2 object-center shadow-xl max-w-sm rounded-lg overflow-scroll h-4/6 routeList">
+                {route.map((bus) => (
+                    <Busbox entity={bus} />
+                ))}
+
+            </div>
+        </div>
+
+
+
+
     )
 }
 
