@@ -5,6 +5,7 @@ import './Layout.css'
 
 const Layout = () => {
 
+    const [data, setData] = useState([]);
     const [route, setRoute] = useState([]);
 
     useEffect(() => {
@@ -12,6 +13,7 @@ const Layout = () => {
             .then((res) => res.json())
             .then(
                 (result) => {
+                    setData(result.data)
                     setRoute(result.data)
                 }
             )
@@ -19,20 +21,31 @@ const Layout = () => {
 
 
     return (
-        <div>
-            <RouteSearch />
+        <div className="flex flex-col object-center routeListBox w-96 shadow-lg fixed">
+            <RouteSearch
+                data={data}
+                setRoute={setRoute}
+            />
 
-            <div className="mt-4 ml-6 p-2 object-center shadow-xl max-w-sm rounded-lg overflow-scroll h-4/6 routeList">
-                {route.map((bus) => (
-                    <Busbox entity={bus} />
-                ))}
+            <div className=" overflow-scroll scroll-mb-52 routeList">
+                {/* {route.map((bus) => (
+                    <Busbox 
+                        entity={bus}
+                    />  
+                ))} */}
+                {
+                    route.map(function (bus, index) {
+                        return (
+                            <Busbox
+                                // key={index}
+                                entity={bus}
+                            />
+                        )
+                    })
+                }
 
             </div>
         </div>
-
-
-
-
     )
 }
 
