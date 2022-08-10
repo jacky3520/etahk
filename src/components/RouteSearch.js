@@ -8,7 +8,7 @@ const searchRoute = (e, props) => {
 
 const RouteSearch = (props) => {
     return (
-        <input type="text" name="route" onChange={event => searchRoute(event, props)} className="border-2 rounded-md py-4 pl-5 placeholder:text-slate-400 font-medium text-xl" placeholder="輸入路線"/>
+        <input type="text" name="route" onChange={event => searchRoute(event, props)} className="border-2 m-2 rounded-md py-4 pl-5 placeholder:text-slate-400 font-medium text-xl" placeholder="輸入路線"/>
     )
 }
 
