@@ -40,28 +40,32 @@ const Layout = () => {
 
 
     return (
-        <div className="flex flex-col object-center routeListBox w-96 shadow-xl fixed">
-            <RouteSearch
-                data={data}
-                setRoute={setRoute}
-            />
+        <div>
+            <div className="flex flex-col object-center routeListBox w-96 shadow-xl fixed">
+                <RouteSearch
+                    data={data}
+                    setRoute={setRoute}
+                />
+                
 
-            <div className="overflow-scroll scroll-mb-52 routeList">
-                {/* <div className="text-center">載入中...</div> */}
-                {
-                    route.map(function (bus, index) {
-                        return (
-                            <Busbox
-                                key={index}
-                                entity={bus}
-                                stopData={stopData}
-                                stopDetails={stopDetails}
-                            />
-                        )
-                    })
-                }
+                <div className="overflow-scroll scroll-mb-52 routeList">
+                    {/* <div className="text-center">載入中...</div> */}
+                    {
+                        route.map(function (bus, index) {
+                            return (
+                                <Busbox
+                                    key={index}
+                                    entity={bus}
+                                    stopData={stopData}
+                                    stopDetails={stopDetails}
+                                />
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
+
     )
 }
 
